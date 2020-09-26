@@ -1,0 +1,6 @@
+_id property
+Made of a 12 byte value
+First four: Timestamp
+Next three: Machine identifiers
+Next Two: Process Id(Way to create a unique identifier)
+Next three: Counter
