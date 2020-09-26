@@ -30,14 +30,11 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db)=>{
     //     };
     //     console.log(JSON.stringify(result.ops[0]._id.getTimestamp(), undefined, 2))
     // });
-    db.collection('Todos').insertOne({
-        text: 'Node fundamentals',
-        completed: true
-    }).then(todo=>{
+    db.collection('Todos').insertOne().then(todo=>{
         console.log('Todo created');
         console.log(JSON.stringify(todo.ops, undefined, 2));
     }, (err)=>{
-        console.log('Unable to insert todo')
+        console.log('Unable to insert todo', err)
     });
 
     db.close();
