@@ -3,37 +3,22 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/TodoApp');
 
-var Todo = mongoose.model('Todo', {
-   text: {
-        type: String
-   },
-   completed: {
-        type: Boolean
-   },
-   completedAt: {
-        type: Number
-   } 
+
+var User = mongoose.model('User',{
+    email: {
+        type: String,
+        minlength: 1,
+        required: true,
+        trim: true
+    }
 });
 
-// var newTodo = new Todo({
-//     text: "Cook dinner"
-// });
-
-// newTodo.save().then((doc)=>{
-//     console.log('Saved todo', doc)
-// }, (e)=>{
-//     console.log('Unable to save todo', e)
-// })
-
-var myTodo = new Todo({
-    text: 'Successfully set up mongoose',
-    completed: true,
-    completedAt: 7
+var user = new User({
+    email: ' example@gmail.com '
 });
 
-myTodo.save().then((doc)=>{
-    console.log('Saved todo', doc);
-}, (e)=>{
-    console.log('Unable to save todo', e);
+user.save().then((doc)=>{
+    console.log('saving user', doc);
+}, (err)=>{
+    console.log('Unable to save user', err);
 });
-
